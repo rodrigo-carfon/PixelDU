@@ -184,10 +184,10 @@ class crawl():
         #### dates handling block to ensure comparison between site dates and system date
         finDate = soup.find('ol').findAll('li')[-1].find('div').find('span').get('aria-label')
         try:
-            finDate = datetime.datetime.strptime(finDate, '%B %d %Y').strftime('%m/%d/%Y')
+            finDate = datetime.datetime.strptime(finDate, '%B %d, %Y').strftime('%m/%d/%Y')
         except: 
-            finDate = f'{finDate} {str(datetime.datetime.now().year)}'
-            finDate = datetime.datetime.strptime(finDate, '%B %d %Y').strftime('%m/%d/%Y')
+            finDate = f'{finDate}, {str(datetime.datetime.now().year)}'
+            finDate = datetime.datetime.strptime(finDate, '%B %d, %Y').strftime('%m/%d/%Y')
         ####   
         finDateAux = datetime.datetime.strptime(finDate, '%m/%d/%Y')
         searchPeriodAux = datetime.datetime.strptime(searchPeriod, '%m/%d/%Y')
@@ -201,10 +201,10 @@ class crawl():
             soup=BeautifulSoup(self.wd.driver.page_source, 'html.parser')
             finDate = soup.find('ol').findAll('li')[-1].find('div').find('span').get('aria-label')
             try:
-                finDate = datetime.datetime.strptime(finDate, '%B %d %Y').strftime('%m/%d/%Y')
+                finDate = datetime.datetime.strptime(finDate, '%B %d, %Y').strftime('%m/%d/%Y')
             except: 
-                finDate = finDate + ' ' + str(datetime.datetime.now().year)
-                finDate = datetime.datetime.strptime(finDate, '%B %d %Y').strftime('%m/%d/%Y')
+                finDate = finDate + ', ' + str(datetime.datetime.now().year)
+                finDate = datetime.datetime.strptime(finDate, '%B %d, %Y').strftime('%m/%d/%Y')
             ####   
             finDateAux = datetime.datetime.strptime(finDate, '%m/%d/%Y')
 
